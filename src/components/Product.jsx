@@ -10,7 +10,7 @@ export const Product = ({ product, show_description }) => {
         navigate(`/products/${product.id}`);
     };
     return (
-        <Card className="m-2 product__card" onClick={handleCardClick}>
+        <Card className="m-2 product__card hover_card" onClick={handleCardClick}>
             <div style={{ height: '150px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                 <Card.Img variant="top" src={product.image} className="product__image" />
             </div>

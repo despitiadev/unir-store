@@ -2,7 +2,9 @@ import React from "react";
 import { useFetch } from '../hooks/useFetch';
 import { Product } from "../components/Product";
 import { Loader } from "../components/Loader";
+import { PageTitle } from "../components/PageTitle";
 import { useParams } from "react-router-dom";
+
 
 export const ProductList = () => {
     const response = useFetch('products');
@@ -16,6 +18,7 @@ export const ProductList = () => {
 
     return (
         <div>
+            <PageTitle />
             <div className="text-center">
                 {isLoading && <Loader visible={isLoading}/>}
             </div>

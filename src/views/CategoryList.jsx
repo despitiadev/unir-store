@@ -10,7 +10,7 @@ export const CategoryList = () => {
     const categoryProductList = useFetch(path);
     return (
         <div>
-            <h1 className="text-capitalize m-3">{category}</h1>
+            <h1 className="text-capitalize m-3 text-center">{category}</h1>
             <div className="text-center">
                 {categoryProductList.isLoading && <Loader visible={categoryProductList.isLoading} />}
             </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useFetch } from "../hooks/useFetch";
 import { Category } from "./Category";
+import { PageTitle } from "../components/PageTitle";
 import { Loader } from "../components/Loader";
 
 export const Home = () => {
@@ -12,7 +13,8 @@ export const Home = () => {
             </div>
             <div className="container">
                 <div className="row">
-                    {categories.fetchResponse.map((category, index) => <Category key={index} index={index} category={category.name}/>)}
+                    <PageTitle />
+                    {categories.fetchResponse.map((category, index) => <Category key={index} index={index} category={category.name} />)}
                 </div>
             </div>
         </div>

@@ -1,10 +1,12 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { useParams } from 'react-router-dom';
 import { useFetch } from '../hooks/useFetch';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Loader } from "../components/Loader";
 import { useNavigate } from "react-router-dom";
+
 import { StoreContext } from "../components/StoreContext";
+import { Loader } from "../components/Loader";
+import { PageTitle } from "../components/PageTitle";
 
 import "../styles/product-details.css";
 
@@ -15,16 +17,30 @@ export const ProductDetails = () => {
     const product = productResponse.fetchResponse;
     const { addProductToCart, addProductToWishlist } = useContext(StoreContext);
     const navigate = useNavigate();
-    const addToCartAndNavigate = (product) => {
-        console.log(product);
-        // addProductToCart(product);
-        // navigate("/cart");
+    const addToCartAndNavigate = async () => {
+        product.qtyOut = unidades;
+        try {
+            await addProductToCart(product); // Esperar a que addProductToCart termine
+            navigate("/cart"); // Navegar a la página del carrito después de que el producto se haya agregado
+        } catch (error) {
+            console.error('Error al agregar el producto al carrito:', error);
+            // Opcional: Manejar el error (por ejemplo, mostrar un mensaje al usuario)
+        }
     };
-
-    console.log(product);
-
+    const [unidades, setUnidades] = useState(1);
+    const sumarUnidad = () => {
+        if (product.qty > unidades) {
+            setUnidades(unidades + 1);
+        }
+    };
+    const restarUnidad = () => {
+        if (unidades > 1) {
+            setUnidades(unidades - 1);
+        }
+    };
     return (
         <div id="store-product-details" className="store__product__details">
+            <PageTitle />
             {productResponse.isLoading && <Loader visible={productResponse.isLoading} />}
             <div id="store-product-details-container" className={`${productResponse.isLoading ? "d-none " : ""} store__product__details--container container mt-5`}>
                 <div id='store-product-details-body' className="store__product__details--body row">
@@ -40,12 +56,11 @@ export const ProductDetails = () => {
                         <p className="store__product__details__info--qty">Disponibles: {product.qty}</p>
 
                         <div className="d-flex align-items-center mb-3">
-                            <button  className="btn btn-secondary me-2">-</button>
-                            {/* <span>{quantity}</span> */}
-                            <span>1</span>
-                            <button className="btn btn-secondary ms-2">+</button>
+                            <button onClick={restarUnidad} className="btn btn-secondary me-2">-</button>
+                            <span>{unidades}</span>
+                            <button onClick={sumarUnidad} className="btn btn-secondary ms-2">+</button>
                         </div>
-                        <button onClick={() => addToCartAndNavigate(product)}
+                        <button onClick={() => addToCartAndNavigate(product, unidades)}
                             className="btn btn-warning mt-3 mb-3 me-2">
                             <FontAwesomeIcon icon="shopping-cart" /> Add to cart
                         </button>

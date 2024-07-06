@@ -5,6 +5,7 @@ import { Menu } from "../components/Menu";
 import { ProductList } from "../views/ProductList";
 import { ProductDetails } from "../views/ProductDetails";
 import { Cart } from "../views/Cart";
+import { About } from "../views/About";
 import { CategoryList } from "../views/CategoryList";
 import { Wishlist } from "../views/Wishlist";
 import {Checkout} from "../views/Checkout";
@@ -17,6 +18,7 @@ export const StoreRouter = () => {
             <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/cart/" element={<Cart />}/>
+                <Route path="/about" element={<About />}/>
                 <Route path="/category/:category" element={<CategoryList />}/>
                 <Route path="/checkout/" element={<Checkout />}/>
                 <Route path="/checkout/success/" element={<CheckoutSuccess />}/>

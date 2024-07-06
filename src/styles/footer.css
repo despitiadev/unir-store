@@ -1,4 +1,4 @@
-.store__footer {
+/* .store__footer {
     margin-top: auto;
     height: 60px;
     background-color: #333;
@@ -6,8 +6,48 @@
     display: flex;
     justify-content: center;
     align-items: center;
-}
+} */
 
 .store__footer--copyright {
     text-align: center;
+}
+
+.store__footer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #333;
+    color: white;
+    align-items: center;
+}
+
+.footer__section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.footer__logo img {
+    width: 100px;
+    /* Ajusta el tamaño del logo a tu gusto */
+}
+
+.footer__link,
+.footer__text {
+    margin-top: 10px;
+    font-size: 14px;
+    color: #ffffff;
+    /* Ajusta el color del texto a tu gusto */
+}
+
+.footer__link {
+    text-decoration: none;
+    color: #007bff;
+    /* Ajusta el color del vínculo a tu gusto */
+}
+
+.footer__link:hover {
+    text-decoration: underline;
 }

@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 export const Checkout = () => {
     const navigate = useNavigate();
     const { cartProducts } = useContext(StoreContext);
-    const total = cartProducts.reduce((acc, product) => acc + (product.price * product.quantity), 0);
+    const total = cartProducts.reduce((acc, product) => acc + (product.price * product.qtyOut), 0);
 
     return (
         <div className="container mt-3">
@@ -45,7 +45,7 @@ export const Checkout = () => {
             <div className="card mb-3">
                 <div className="card-header">Order Summary</div>
                 <div className="card-body">
-                    <p><strong>Order total: USD${total}</strong></p>
+                    <p className='display-5'><strong>Order total: USD${total}</strong></p>
                     <button
                         disabled={cartProducts.length === 0}
                         onClick={() => navigate('/checkout/success')}

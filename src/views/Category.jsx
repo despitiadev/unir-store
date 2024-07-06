@@ -19,7 +19,7 @@ export const Category = ({ index, category }) => {
     };
     return (
         <div className="col-sm-6 col-md-4 col-lg-3">
-            <Card className="m-2 category__container" onClick={handleCardClick}>
+            <Card className="m-2 category__containe hover_card" onClick={handleCardClick}>
                 <div className="category__container--img">
                     <Card.Img variant="top" src={images[category]} className="product__image" />
                 </div>

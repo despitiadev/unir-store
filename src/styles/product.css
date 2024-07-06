@@ -21,6 +21,11 @@
     box-sizing: border-box;
     padding: 10px;
 }
+.hover_card:hover {
+    cursor: pointer; /* Cambia el cursor a una mano */
+    transform: scale(1.05); /* Aumenta un poco el tamaño del card */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra sutil */
+}
 
 @media (min-width: 768px) {
     .product__card {
